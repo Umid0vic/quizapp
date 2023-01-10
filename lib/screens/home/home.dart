@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+import 'package:quizapp/screens/login/login.dart';
+import 'package:quizapp/screens/profile/profile.dart';
+import 'package:quizapp/services/auth.dart';
+import 'package:quizapp/shared/shared.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: AuthService().userStream,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const LoadingScreen();
+        } else if (snapshot.hasError) {
+          return const Center(
+            child: ErrorMessage(),
+          );
+        } else if (snapshot.hasData) {
+          print("profile screen");
+          return const ProfileScreen();
+        } else {
+          return const LoginScreen();
+        }
+      },
+    );
+  }
+}
