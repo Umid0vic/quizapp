@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/screens/login/login.dart';
-import 'package:quizapp/screens/profile/profile.dart';
+import 'package:quizapp/screens/topics/topics.dart';
 import 'package:quizapp/services/auth.dart';
 import 'package:quizapp/shared/shared.dart';
 
@@ -19,8 +19,7 @@ class HomeScreen extends StatelessWidget {
             child: ErrorMessage(),
           );
         } else if (snapshot.hasData) {
-          print("profile screen");
-          return const ProfileScreen();
+          return const TopicsScreen();
         } else {
           return const LoginScreen();
         }
