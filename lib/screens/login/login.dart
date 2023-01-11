@@ -14,14 +14,25 @@ class LoginScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            const Spacer(),
             const FlutterLogo(
               size: 150,
             ),
+            const Spacer(),
             LoginButton(
-              icon: FontAwesomeIcons.userNinja,
-              text: 'Continue as Guest',
-              loginMethod: AuthService().anonLogin,
-              color: Colors.deepPurple,
+              text: 'Sign in with Google',
+              icon: FontAwesomeIcons.google,
+              color: Colors.blue,
+              loginMethod: AuthService().googleLogin,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: LoginButton(
+                text: 'Continue as Guest',
+                icon: FontAwesomeIcons.userNinja,
+                loginMethod: AuthService().anonLogin,
+                color: Colors.deepPurple,
+              ),
             ),
           ],
         ),
